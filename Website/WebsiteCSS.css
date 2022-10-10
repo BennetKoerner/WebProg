@@ -1,3 +1,31 @@
 body {
-    background-color: lightblue;
+
+}
+footer {
+    background-color: #ffffff;
+
+    position: absolute;
+    bottom:0;
+    width: 100%;
+
+    padding: 0.5em;
+    font-size: 95%;
+}
+footer nav > ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+footer nav > ul > li {
+    display: inline-block;
+    margin-right: 1em;
+}
+a, a:visited {
+    color: rgb(217, 158, 158);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ec5252;
 }
