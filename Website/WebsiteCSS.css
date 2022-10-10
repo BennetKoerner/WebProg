@@ -1,6 +1,31 @@
 body {
 
 }
+.top > p{
+    text-align: right;
+}
+
+.topnav{
+    text-align: center;
+}
+
+.top > h1, .top > h2{
+    width: 100%;
+    display: inline;
+    margin-right: 40%;
+}
+
+.topnav > a, .topnav > a:visited{
+    margin-right: 15em;
+    color: rgb(217, 158, 158);
+    text-decoration: none;
+    /* border-style: solid; boxes*/
+}
+
+.topnav > a:hover{
+    color: #ec5252;
+}
+
 footer {
     background-color: #ffffff;
 
@@ -11,6 +36,7 @@ footer {
     padding: 0.5em;
     font-size: 95%;
 }
+
 footer nav > ul {
     list-style: none;
     padding: 0;
@@ -21,11 +47,12 @@ footer nav > ul > li {
     display: inline-block;
     margin-right: 1em;
 }
-a, a:visited {
+
+.bottomBar > ul > li > a,.bottomBar > ul > li > a:visited {
     color: rgb(217, 158, 158);
     text-decoration: none;
 }
 
-a:hover {
+.bottomBar > ul > li > a:hover {
     color: #ec5252;
 }
