@@ -37,13 +37,13 @@ footer {
     font-size: 95%;
 }
 
-footer nav > ul {
+footer div > ul {
     list-style: none;
     padding: 0;
     width: 100%;
 }
 
-footer nav > ul > li {
+footer div > ul > li {
     display: inline-block;
     margin-right: 1em;
 }
