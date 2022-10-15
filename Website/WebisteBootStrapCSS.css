@@ -1,8 +1,47 @@
 .navbar-nav > li{
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:40px;
+    padding-right:40px;
+    position: sticky;
 }
 
-.logo{
-    margin-right: 100px;
+.logo {
+   margin-right: 180px;
 }
+
+.nav-link:hover {
+    background-color: #ddcfb4;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.nav-link {
+    border: none;
+    border-radius: 20px;
+
+
+}
+
+.bi-chevron-left {
+    margin-top: 12px;
+}
+
+.phone-text {
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.phone {
+    margin-top: 15px;
+    margin-left: 600px;
+}
+
+.vertical-line {
+    border-left: 3px solid #7ae0cf;
+    height: 100%;
+
+    right: 50%;
+    margin-right: 500px;
+    top: 10%;
+    margin-top: -1%;
+}
+
