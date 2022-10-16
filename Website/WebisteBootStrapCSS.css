@@ -45,3 +45,9 @@
     margin-top: -1%;
 }
 
+.list-group{
+    max-height: 50%;
+    margin-bottom: 10%;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
