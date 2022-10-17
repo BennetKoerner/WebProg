@@ -38,7 +38,6 @@
 .vertical-line {
     border-left: 3px solid #7ae0cf;
     height: 100%;
-
     right: 50%;
     margin-right: 500px;
     top: 10%;
@@ -47,7 +46,31 @@
 
 .list-group{
     max-height: 50%;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
     overflow:scroll;
     -webkit-overflow-scrolling: touch;
 }
+
+.order-now{
+    background-color: #ddcfb4;
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 5px;
+    font-weight: bold;
+    border-color: #9a9595;
+
+
+
+}
+
+.order-now:hover{
+    background-color: #ddcfb4;
+    color: #ffffff;
+    border-radius: 10px;
+}
+.bi-bag-check {
+    width: 20px;
+    margin-top: -2%;
+    margin-left: 34%;
+}
+
