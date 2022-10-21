@@ -13,7 +13,6 @@ for (let i = 0; i < addCarItemButtons.length; i++) {
     })
 }
 
-
 function updateCartTotal() {
     let cardRowContainer = document.getElementsByClassName("row")[0]
     let cards = cartRowContainer.getElementsByClassName("card")
