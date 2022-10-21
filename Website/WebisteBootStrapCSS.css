@@ -3,6 +3,9 @@
     padding-right:40px;
     position: sticky;
 }
+.navbar{
+    z-index: 1500 ;
+}
 
 .logo {
    margin-right: 180px;
