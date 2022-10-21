@@ -1,58 +1,43 @@
 body {
-
-}
-.top > p{
-    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.topnav{
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
     text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.top > h1, .top > h2{
-    width: 100%;
-    display: inline;
-    margin-right: 40%;
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
 }
 
-.topnav > a, .topnav > a:visited{
-    margin-right: 15em;
-    color: rgb(217, 158, 158);
-    text-decoration: none;
-    /* border-style: solid; boxes*/
-}
-
-.topnav > a:hover{
-    color: #ec5252;
-}
-
-footer {
-    background-color: #ffffff;
-
+.flip-card-front, .flip-card-back {
     position: absolute;
-    bottom:0;
     width: 100%;
-
-    padding: 0.5em;
-    font-size: 95%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
-footer div > ul {
-    list-style: none;
-    padding: 0;
-    width: 100%;
+.flip-card-front {
+    background-color: #f3f0cc;
+    color: black;
 }
 
-footer div > ul > li {
-    display: inline-block;
-    margin-right: 1em;
-}
-
-.bottomBar > ul > li > a,.bottomBar > ul > li > a:visited {
-    color: rgb(217, 158, 158);
-    text-decoration: none;
-}
-
-.bottomBar > ul > li > a:hover {
-    color: #ec5252;
+.flip-card-back {
+    background-color: #bb92e8;
+    color: white;
+    transform: rotateY(180deg);
 }
