@@ -23,13 +23,21 @@ window.addEventListener("load", () => {
         let total = parseFloat(getTotal.innerText.replace("Gesamtsumme:", ""))
         //get the item which should be deleted
         let buttonClicked = event.target
-        let price = parseFloat(buttonClicked.parentElement.innerText.replace("Preis:", ""))
+        let price = parseFloat(buttonClicked.parentElement.parentElement.innerText.replace("Preis:", ""))
         console.log(price)
         //update the total
         total = total - price
         document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
         //delete the clicked item from the card
-        buttonClicked.parentElement.parentElement.remove()
+        buttonClicked.parentElement.parentElement.parentElement.remove()
+    }
+
+    function quantityChanged(event) {
+        let input = event.target
+        if (isNaN(input.value) || input.value <= 0) {
+            input.value = 1
+        }
+        //updateCartTotal()
     }
 
 
@@ -44,21 +52,40 @@ window.addEventListener("load", () => {
         let title = shopItem.getElementsByClassName("card-title")[0].innerText
         let price = shopItem.getElementsByClassName("card-text")[0].innerText
         console.log(title, price)
-        //add the chosen item
-        let listItem = document.createElement("a")
-        let cardItems = document.getElementsByClassName("list-group")[0]
-        let listItemContent =`
+        //check if the item typ is already in the card
+        let itemTypInCard = document.getElementsByClassName("list-group-item")
+        let alreadyExist = false;
+        for (let l = 0; l < itemTypInCard.length; l++) {
+            let itemTyp = itemTypInCard[l]
+            if (itemTyp.getElementsByClassName("mb-1")[0].innerText == title) {
+                alreadyExist = true;
+                let quantity = parseFloat(itemTyp.getElementsByClassName("cart-quantity-input")[0].innerText)
+                itemTyp.getElementsByClassName("cart-quantity-input")[0].innerText = quantity + 1
+
+            }
+        }
+        //add chosen item typ if it is not existing
+        if (alreadyExist == false) {
+            let listItem = document.createElement("a")
+            let cardItems = document.getElementsByClassName("list-group")[0]
+            let listItemContent =`
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">${title}</strong>
-                    <small>Wed</small>
                 </div>
-                <div class="col-10 mb-1 small">${price} &ensp;
-                    <button class="btn-success">Löschen</button>
+                <div class="col-10 mb-1 small">
+                      ${price}&ensp;&nbsp;&nbsp; Menge: &ensp;
+                     <input class="cart-quantity-input" type="number" value="1">
+                     <div>
+                        <button class="btn-success">Löschen</button>
+                    </div>
                 </div>
             </a>`
-        listItem.innerHTML = listItemContent
-        cardItems.append(listItem)
+            listItem.innerHTML = listItemContent
+            cardItems.append(listItem)
+        }
+        //add the chosen item
+
         //update the total
         let priceFloat = parseFloat(price.replace("Preis:", ""))
         total = total + priceFloat
