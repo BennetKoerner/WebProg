@@ -1,30 +1,36 @@
+window.addEventListener("load", () => {
 
-    let addCardItemButtons = document.getElementsByClassName("btn btn-primary")
-    console.log(addCardItemButtons)
-    for (let i = 0; i < addCardItemButtons.length; i++) {
-        let button = addCardItemButtons[i]
-        button.addEventListener("click", addCardItem)
+    //get the delete buttons
+    let deleteCardItemButtons = document.getElementsByClassName("btn-success")
+    console.log(deleteCardItemButtons)
+    for (let i = 0; i < deleteCardItemButtons.length; i++) {
+        let button = deleteCardItemButtons[i]
+        button.addEventListener("click", deleteCardItem)
     }
 
 
-    function addCardItem(event) {
+    function deleteCardItem(event) {
+        //get the total of the card
+        let getTotal = document.getElementsByClassName("sum")[0]
+        let total = parseFloat(getTotal.innerText.replace("Gesamtsumme:", ""))
+
+        //get the item which should be deleted
         let buttonClicked = event.target
-        buttonClicked.get.add()
-        updateCartTotal()
+        let price = parseFloat(buttonClicked.parentElement.innerText.replace("Preis:", ""))
+        console.log(price)
+
+        //update the total
+        total = total - price
+        document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
+
+        //delete the clicked item from the card
+        buttonClicked.parentElement.parentElement.remove()
     }
 
-    function updateCartTotal() {
-        let cardRowContainer = document.getElementsByClassName("row")[0]
-        let cards = cardRowContainer.getElementsByClassName("card")
-        let total = 0;
-        for (let i = 0; i < cards.length; i++) {
-            let card = cards[i]
-            let priceElement = card.getElementsByClassName("card-tex")[0]
-            let price = parseFloat(priceElement.innerText.replace("€", ""))
-            price = price.innerText.replace("Preis: ", " ")
-        }
-        document.getElementsByClassName("fw-semibold")[0].innerText = total + "€"
-    }
+
+})
+
+
 
 
 
