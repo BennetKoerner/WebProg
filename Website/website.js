@@ -32,15 +32,6 @@ window.addEventListener("load", () => {
         buttonClicked.parentElement.parentElement.parentElement.remove()
     }
 
-    function quantityChanged(event) {
-        let input = event.target
-        if (isNaN(input.value) || input.value <= 0) {
-            input.value = 1
-        }
-        //updateCartTotal()
-    }
-
-
 
     function addCardItem(event) {
         //get the total of the card
@@ -51,24 +42,18 @@ window.addEventListener("load", () => {
         let shopItem = buttonClicked.parentElement
         let title = shopItem.getElementsByClassName("card-title")[0].innerText
         let price = shopItem.getElementsByClassName("card-text")[0].innerText
-        console.log(title, price)
         //check if the item typ is already in the card
-        let itemTypInCard = document.getElementsByClassName("list-group-item")
-        let alreadyExist = false;
-        for (let l = 0; l < itemTypInCard.length; l++) {
-            let itemTyp = itemTypInCard[l]
-            if (itemTyp.getElementsByClassName("mb-1")[0].innerText == title) {
-                alreadyExist = true;
-                let quantity = parseFloat(itemTyp.getElementsByClassName("cart-quantity-input")[0].innerText)
-                itemTyp.getElementsByClassName("cart-quantity-input")[0].innerText = quantity + 1
-
+        let cardItems = document.getElementsByClassName("list-group")[0]
+        let cardItemNames = cardItems.getElementsByClassName("d-flex")
+        for (let l = 0; l < cardItemNames.length; l++) {
+            if (cardItemNames[l].innerText == title) {
+                alert("Der Artikel " + title + " ist bereits im Warenkorb.\nDie gewünschte Menge kann im Warenkorb angepasst werden.")
+                return
             }
         }
-        //add chosen item typ if it is not existing
-        if (alreadyExist == false) {
-            let listItem = document.createElement("a")
-            let cardItems = document.getElementsByClassName("list-group")[0]
-            let listItemContent =`
+        //add the chosen item in card
+        let listItem = document.createElement("a")
+        let listItemContent = `
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">${title}</strong>
@@ -81,25 +66,23 @@ window.addEventListener("load", () => {
                     </div>
                 </div>
             </a>`
-            listItem.innerHTML = listItemContent
-            cardItems.append(listItem)
-        }
-        //add the chosen item
-
+        listItem.innerHTML = listItemContent
+        cardItems.append(listItem)
         //update the total
         let priceFloat = parseFloat(price.replace("Preis:", ""))
         total = total + priceFloat
         document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
         //NEED TO BE FIXED!!!
-        let deleteCardItemButtons = document.getElementsByClassName("btn-success")
+        deleteCardItemButtons = document.getElementsByClassName("btn-success")
         console.log(deleteCardItemButtons)
         for (let i = 0; i < deleteCardItemButtons.length; i++) {
             let deleteItemButton = deleteCardItemButtons[i]
             deleteItemButton.addEventListener("click", deleteCardItem)
         }
-
-
     }
+
+
+
 
 
 })
