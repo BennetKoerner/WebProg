@@ -1,49 +1,42 @@
 window.addEventListener("load", () => {
 
-    //get all the relevant buttons after loading
-    getAddCardItemButtons()
-    getTheDeleteItemButtons()
-    getQuantityInputs()
-
-    function getAddCardItemButtons() {
-        let addCardItemButtons = document.getElementsByClassName("btn")
-        console.log(addCardItemButtons)
-        for (let i = 0; i < addCardItemButtons.length; i++) {
-            let addItemButton = addCardItemButtons[i]
-            addItemButton.addEventListener("click", addCardItem)
-        }
+    //get the delete item buttons
+    let deleteCardItemButtons = document.getElementsByClassName("btn-success")
+    console.log(deleteCardItemButtons)
+    for (let i = 0; i < deleteCardItemButtons.length; i++) {
+        let deleteItemButton = deleteCardItemButtons[i]
+        deleteItemButton.addEventListener("click", deleteCardItem)
     }
 
-    function getTheDeleteItemButtons() {
-        let deleteCardItemButtons = document.getElementsByClassName("btn-success")
-        console.log(deleteCardItemButtons)
-        for (let i = 0; i < deleteCardItemButtons.length; i++) {
-            let deleteItemButton = deleteCardItemButtons[i]
-            deleteItemButton.addEventListener("click", deleteCardItem)
-        }
+    //get the add item buttons
+    let addCardItemButtons = document.getElementsByClassName("btn")
+    console.log(addCardItemButtons)
+    for (let i = 0; i < addCardItemButtons.length; i++) {
+        let addItemButton = addCardItemButtons[i]
+        addItemButton.addEventListener("click", addCardItem)
     }
-
-    function getQuantityInputs() {
-        let quantityInputs = document.getElementsByClassName("cart-quantity-input")
-        for (let i = 0; i < quantityInputs.length; i++) {
-            let inputNumber = quantityInputs[i]
-            inputNumber.addEventListener("change", quantityChanged)
-        }
-    }
-
 
 
     function deleteCardItem(event) {
+        //get the total of the card
+        let getTotal = document.getElementsByClassName("sum")[0]
+        let total = parseFloat(getTotal.innerText.replace("Gesamtsumme:", ""))
         //get the item which should be deleted
         let buttonClicked = event.target
+        let price = parseFloat(buttonClicked.parentElement.parentElement.innerText.replace("Preis:", ""))
+        console.log(price)
+        //update the total
+        total = total - price
+        document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
         //delete the clicked item from the card
         buttonClicked.parentElement.parentElement.parentElement.remove()
-        //update the total of the card
-        updateTotal()
     }
 
 
     function addCardItem(event) {
+        //get the total of the card
+        let getTotal = document.getElementsByClassName("sum")[0]
+        let total = parseFloat(getTotal.innerText.replace("Gesamtsumme:", ""))
         //get the item which should be added
         let buttonClicked = event.target
         let shopItem = buttonClicked.parentElement
@@ -54,11 +47,11 @@ window.addEventListener("load", () => {
         let cardItemNames = cardItems.getElementsByClassName("d-flex")
         for (let l = 0; l < cardItemNames.length; l++) {
             if (cardItemNames[l].innerText == title) {
-                alert("Der Artikel " +title + " ist bereits im Warenkorb.\nDie gewünschte Menge kann im Warenkorb angepasst werden.")
+                alert("Der Artikel " + title + " ist bereits im Warenkorb.\nDie gewünschte Menge kann im Warenkorb angepasst werden.")
                 return
             }
         }
-        //add the chosen item in card if it does not exist already
+        //add the chosen item in card
         let listItem = document.createElement("a")
         let listItemContent = `
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
@@ -76,46 +69,17 @@ window.addEventListener("load", () => {
         listItem.innerHTML = listItemContent
         cardItems.append(listItem)
         //update the total
-        updateTotal()
-        //update relevant buttons
-        getTheDeleteItemButtons()
-        getQuantityInputs()
+        let priceFloat = parseFloat(price.replace("Preis:", ""))
+        total = total + priceFloat
+        document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
+        //NEED TO BE FIXED!!!
+        deleteCardItemButtons = document.getElementsByClassName("btn-success")
+        console.log(deleteCardItemButtons)
+        for (let i = 0; i < deleteCardItemButtons.length; i++) {
+            let deleteItemButton = deleteCardItemButtons[i]
+            deleteItemButton.addEventListener("click", deleteCardItem)
+        }
     }
-
-    function quantityChanged(event) {
-        let newInput = event.target
-        let price = parseFloat(newInput.parentElement.innerText.replace("Preis:", ""))
-        //check input
-        if (isNaN(newInput.value) || newInput.value < 1) {
-            newInput.value = 1;
-        }
-        //update the total of the card
-        updateTotal()
-    }
-
-    function updateTotal() {
-        //get the items of the card
-        let cardItems = document.getElementsByClassName("list-group")[0]
-        //get the price and quantity of the items
-        let cardPrices = cardItems.getElementsByClassName("col-10")
-        let cardQuantities = cardItems.getElementsByClassName("cart-quantity-input")
-        //calculate the total of the card
-        let total = 0;
-        for (let i = 0; i < cardPrices.length; i++) {
-            let price = parseFloat(cardPrices[i].innerText.replace("Preis:", ""))
-            let quantity = cardQuantities[i].value
-            total += price * quantity
-        }
-        //set the total of the card
-        if (total == 0) {
-            document.getElementsByClassName("sum")[0].innerText = "Der Warenkorb ist leer!"
-        }
-        else {
-            document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
-        }
-
-    }
-
 
 
 
