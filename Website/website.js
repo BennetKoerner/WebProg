@@ -4,6 +4,7 @@ window.addEventListener("load", () => {
     getAddCardItemButtons()
     getTheDeleteItemButtons()
     getQuantityInputs()
+    getOrderButton()
 
     function getAddCardItemButtons() {
         let addCardItemButtons = document.getElementsByClassName("btn")
@@ -29,6 +30,12 @@ window.addEventListener("load", () => {
             let inputNumber = quantityInputs[i]
             inputNumber.addEventListener("change", quantityChanged)
         }
+    }
+    
+    function getOrderButton() {
+        let orderButton = document.getElementsByClassName("order-now")[0]
+        console.log(orderButton.innerText)
+        orderButton.addEventListener("click", orderButtonClicked)
     }
 
 
@@ -113,6 +120,46 @@ window.addEventListener("load", () => {
             document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
         }
 
+    }
+    
+    function orderButtonClicked(event) {
+        //get the order
+        let cardItems = document.getElementsByClassName("list-group")[0]
+        //get the details of the ordered items
+        let cardPrices = cardItems.getElementsByClassName("col-10")
+        let cardQuantities = cardItems.getElementsByClassName("cart-quantity-input")
+        let cardNames = cardItems.getElementsByClassName("mb-1")
+        //create order view
+        let order = document.createElement("div")
+        let orderContent = `
+            <div class="col-4">
+                <div class="container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h1>Bestellung</h1>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>Order</h1>`
+        window.open("Website.html")
+        console.log(cardNames, cardQuantities, cardPrices)
+        for (let i = 0; cardPrices.length; i++) {
+            orderContent = `order Content <p>${cardNames[i]}, Menge:${cardQuantities[i]}</p>`
+        }
+        orderContent = `orderContent +
+            <a href="#" class="btn btn-primary">Zubereitung Abgeschlossen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>`
+        //set the order view
+        order.innerHTML = orderContent
+        let viewOrders = document.getElementsByClassName("row")[0]
+        viewOrders.append(order)
+        //open order view
+        window.open("Website.html")
+        
     }
 
 
