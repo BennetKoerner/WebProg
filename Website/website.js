@@ -108,7 +108,8 @@ window.addEventListener("load", () => {
         //set the total of the card
         if (total == 0) {
             document.getElementsByClassName("sum")[0].innerText = "Der Warenkorb ist leer!"
-        } else {
+        } 
+        else {
             document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
         }
 
