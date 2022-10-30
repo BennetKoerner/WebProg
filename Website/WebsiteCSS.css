@@ -41,3 +41,9 @@ body {
     color: white;
     transform: rotateY(180deg);
 }
+
+.deliveryDate {
+    margin-top: 10%;
+    margin-left: 10%;
+    text-align: left;
+}

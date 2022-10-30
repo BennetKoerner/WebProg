@@ -10,7 +10,6 @@
     color:darkblue;
     font-size: 3rem;
     padding-bottom: 2rem;
-    text-transform: uppercase;
 }
 .btn{
     margin-top: 1rem;
@@ -25,7 +24,7 @@
 
 .btn:hover{
     background: green;
-    letter-spacing: .1rem;
+
 }
 
 .order form{
@@ -79,4 +78,8 @@
 
 .order form .btn{
     margin-top: 0;
+}
+
+.input {
+    margin-right: 2%;
 }
