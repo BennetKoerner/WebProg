@@ -123,6 +123,11 @@ window.addEventListener("load", () => {
     }
     
     function orderButtonClicked(event) {
+        //open delivery data
+        window.open("orderForm.html")
+    }
+
+    function orderButtonClickedText() {
         //get the order
         let cardItems = document.getElementsByClassName("list-group")[0]
         //get the details of the ordered items
@@ -131,7 +136,7 @@ window.addEventListener("load", () => {
         let cardNames = cardItems.getElementsByClassName("mb-1")
         //create order view
         let order = document.createElement("div")
-        let orderContent = `
+        let orderContent =`
             <div class="col-4">
                 <div class="container">
                     <div class="flip-card">
@@ -141,13 +146,12 @@ window.addEventListener("load", () => {
                             </div>
                             <div class="flip-card-back">
                                 <h1>Order</h1>`
-        window.open("Website.html")
         console.log(cardNames, cardQuantities, cardPrices)
         for (let i = 0; cardPrices.length; i++) {
-            orderContent = `order Content <p>${cardNames[i]}, Menge:${cardQuantities[i]}</p>`
+            orderContent = `orderContent` +  `<p>${cardNames[i]}, Menge:${cardQuantities[i]}</p>`
         }
-        orderContent = `orderContent +
-            <a href="#" class="btn btn-primary">Zubereitung Abgeschlossen</a>
+        orderContent = `orderContent` +
+            `<a href="#" class="btn btn-primary">Zubereitung Abgeschlossen</a>
                         </div>
                     </div>
                 </div>
@@ -155,11 +159,10 @@ window.addEventListener("load", () => {
        </div>`
         //set the order view
         order.innerHTML = orderContent
-        let viewOrders = document.getElementsByClassName("row")[0]
+        let viewOrders = document.getElementsByClassName("row-order")[0]
         viewOrders.append(order)
         //open order view
         window.open("Website.html")
-        
     }
 
 
