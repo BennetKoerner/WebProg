@@ -20,8 +20,6 @@
 .nav-link {
     border: none;
     border-radius: 20px;
-
-
 }
 
 .bi-chevron-left {
@@ -78,7 +76,7 @@
 .sum{
     font-weight: bold;
 }
-
-
-
+.fw-light{
+    text-align: center;
+}
 
