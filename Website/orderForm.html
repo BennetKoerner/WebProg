@@ -18,28 +18,49 @@
     <div class="inputBox">
       <div class="input">
         <span>Vorname</span>
-        <input  type="text" placeholder="Bitte geben Sie Ihren Vornamen ein" id="4000">
+        <input  type="text" placeholder="Bitte geben Sie Ihren Vornamen ein" id="firstName">
       </div>
       <div class="input">
         <span>Nachname</span>
-        <input type="text" placeholder="Bitte geben Sie Ihren Nachnamen ein">
+        <input type="text" placeholder="Bitte geben Sie Ihren Nachnamen ein" id="lastName">
       </div>
       <div class="input">
         <span>Handynummer</span>
-        <input type="text" placeholder="Bitte geben Sie Ihre Handynummer an">
+        <input type="text" placeholder="Bitte geben Sie Ihre Handynummer an" id="mobile">
       </div>
       <div class="input">
         <span>Wohnort</span>
-        <input type="text" placeholder="Bitte geben Sie Ihren Wohnort mit der Postleitzahl an">
+        <input type="text" placeholder="Bitte geben Sie Ihren Wohnort an" id="city">
+      </div>
+      <div class="input">
+        <span>Postleitzahl</span>
+        <input type="text" placeholder="Bitte geben Sie Ihre Postleitzahl an" id="postCode">
       </div>
       <div class="input">
         <span>Straße</span>
-        <input type="text" placeholder="Bitte geben Sie Ihre Straße mit Hausnummer an">
+        <input type="text" placeholder="Bitte geben Sie Ihre Straße mit Hausnummer an" id="street">
       </div>
       <div class="input">
         <span>Hinweise zur Bestellung</span>
-        <textarea name="" placeholder="Hier können Sie Anmerkungen hinzufügen" cols="30" rows="10"></textarea>
+        <textarea name="" placeholder="Hier können Sie Anmerkungen hinzufügen" cols="30" rows="10" id="extraNote"></textarea>
       </div>
+    </div>
+
+    <div class="payment">
+      <span>Zahlungsmethode</span>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Bargeldzahlung
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+      <label class="form-check-label" for="flexRadioDefault2">
+        Paypal
+      </label>
     </div>
 
 
@@ -48,6 +69,6 @@
   </form>
 
 </section>
-<script src="./bestellformular.js"></script>
+<script src="./bestellformular.js" ></script>
 </body>
 </html>
