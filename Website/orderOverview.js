@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
 
-
+    //import  getDeliveryData  from "./bestellformular.js";
+    //getDeliveryData()
     let order = document.createElement("div")
     let orderContent =`
                     <div class="col-4">

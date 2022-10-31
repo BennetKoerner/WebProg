@@ -12,7 +12,7 @@
     padding-bottom: 2rem;
 }
 .btn{
-    margin-top: 1rem;
+    margin-top: 6rem;
     display: inline-block;
     font-size: 1.7rem;
     color:#fff;
@@ -82,4 +82,20 @@
 
 .input {
     margin-right: 2%;
+}
+
+.payment {
+    font-family: "Times New Roman";
+    font-size: 25px;
+    color: #6e6f78;
+}
+
+input[type="radio"]{
+    transform: scale(1.5);
+    margin: 1%;
+}
+
+.form-check {
+    font-family: "Times New Roman";
+    font-size: 20px;
 }
