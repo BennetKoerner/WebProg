@@ -31,7 +31,7 @@ window.addEventListener("load", () => {
             inputNumber.addEventListener("change", quantityChanged)
         }
     }
-    
+
     function getOrderButton() {
         let orderButton = document.getElementsByClassName("order-now")[0]
         console.log(orderButton.innerText)
@@ -69,7 +69,7 @@ window.addEventListener("load", () => {
         let listItemContent = `
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">${title}</strong>
+                    <strong class="mb-300">${title}</strong>
                 </div>
                 <div class="col-10 mb-1 small">
                       ${price}&ensp;&nbsp;&nbsp; Menge: &ensp;
@@ -115,55 +115,48 @@ window.addEventListener("load", () => {
         //set the total of the card
         if (total == 0) {
             document.getElementsByClassName("sum")[0].innerText = "Der Warenkorb ist leer!"
-        } 
+        }
         else {
             document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
         }
 
     }
-    
-    function orderButtonClicked(event) {
-        //open delivery data
-        window.open("orderForm.html")
-    }
 
-    function orderButtonClickedText() {
+    function orderButtonClicked(event) {
+
         //get the order
         let cardItems = document.getElementsByClassName("list-group")[0]
+
         //get the details of the ordered items
         let cardPrices = cardItems.getElementsByClassName("col-10")
         let cardQuantities = cardItems.getElementsByClassName("cart-quantity-input")
-        let cardNames = cardItems.getElementsByClassName("mb-1")
-        //create order view
-        let order = document.createElement("div")
-        let orderContent =`
-            <div class="col-4">
-                <div class="container">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <h1>Bestellung</h1>
-                            </div>
-                            <div class="flip-card-back">
-                                <h1>Order</h1>`
-        console.log(cardNames, cardQuantities, cardPrices)
-        for (let i = 0; cardPrices.length; i++) {
-            orderContent = `orderContent` +  `<p>${cardNames[i]}, Menge:${cardQuantities[i]}</p>`
+        let cardNames = cardItems.getElementsByClassName("mb-300")
+
+
+        //safe order details in local storage
+        for (let i = 0; i < cardPrices.length; i++) {
+            localStorage.setItem("ls_name"+[i] ,cardNames[i].innerText)
+            localStorage.setItem("ls_price"+[i], cardPrices[i].innerText.replace("Preis:", "").replace("Menge:", "").replace("Löschen", ""))
+            localStorage.setItem("ls_quantity"+[i] ,cardQuantities[i].value)
+
+
         }
-        orderContent = `orderContent` +
-            `<a href="#" class="btn btn-primary">Zubereitung Abgeschlossen</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       </div>`
-        //set the order view
-        order.innerHTML = orderContent
-        let viewOrders = document.getElementsByClassName("row-order")[0]
-        viewOrders.append(order)
-        //open order view
-        window.open("Website.html")
+        console.log(localStorage.getItem("ls_name0"))
+        console.log(localStorage.getItem("ls_price0"))
+        console.log(localStorage.getItem("ls_quantity0"))
+        console.log(localStorage.getItem("ls_name1"))
+        console.log(localStorage.getItem("ls_price1"))
+        console.log(localStorage.getItem("ls_quantity1"))
+
+        //open delivery data
+        window.open("orderForm.html")
+
     }
+
+
+
+
+
 
 
 })
