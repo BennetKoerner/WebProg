@@ -3,7 +3,8 @@ window.addEventListener("load", () => {
     let orderConfirm = document.getElementsByClassName("btn")[0]
     orderConfirm.addEventListener("click", orderConfirmed)
 
-    function getDeliveryData() {
+    function orderConfirmed (event) {
+
         //get the delivery data
         let firstName = document.getElementById("firstName").value
         let lastName = document.getElementById("lastName").value
@@ -13,12 +14,20 @@ window.addEventListener("load", () => {
         let postCode = document.getElementById("postCode").value
         let extraNote = document.getElementById("extraNote").value
         //BEZAHLMETHODE MUSS NOCH ERGÄNZT WERDEN!!!
-        console.log(firstName, lastName, mobileNumber, city, street, extraNote, postCode,)
-    }
+        console.log(firstName, lastName, mobileNumber, city, street, extraNote, postCode)
 
-    function orderConfirmed (event) {
+        //safe delivery data in local storage
+        localStorage.setItem("ls_firstName", firstName)
+        localStorage.setItem("ls_lastName", lastName)
+        localStorage.setItem("ls_mobileNumber", mobileNumber)
+        localStorage.setItem("ls_city", city)
+        localStorage.setItem("ls_street", street)
+        localStorage.setItem("ls_postCode", postCode)
+        localStorage.setItem("ls_extraNote", extraNote)
+
         //open order overview
         window.open("Website.html")
+
 
     }
 
