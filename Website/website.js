@@ -118,6 +118,7 @@ window.addEventListener("load", () => {
         }
         else {
             document.getElementsByClassName("sum")[0].innerText = "Gesamtsumme: " + total + "€"
+
         }
 
     }
@@ -131,22 +132,23 @@ window.addEventListener("load", () => {
         let cardPrices = cardItems.getElementsByClassName("col-10")
         let cardQuantities = cardItems.getElementsByClassName("cart-quantity-input")
         let cardNames = cardItems.getElementsByClassName("mb-300")
-
+        let amountOfDifferentItems = 0
 
         //safe order details in local storage
         for (let i = 0; i < cardPrices.length; i++) {
             localStorage.setItem("ls_name"+[i] ,cardNames[i].innerText)
             localStorage.setItem("ls_price"+[i], cardPrices[i].innerText.replace("Preis:", "").replace("Menge:", "").replace("Löschen", ""))
             localStorage.setItem("ls_quantity"+[i] ,cardQuantities[i].value)
-
-
+            amountOfDifferentItems++
         }
-        console.log(localStorage.getItem("ls_name0"))
-        console.log(localStorage.getItem("ls_price0"))
-        console.log(localStorage.getItem("ls_quantity0"))
-        console.log(localStorage.getItem("ls_name1"))
-        console.log(localStorage.getItem("ls_price1"))
-        console.log(localStorage.getItem("ls_quantity1"))
+        let amountAsString = amountOfDifferentItems.toString()
+        localStorage.setItem("ls_amountOfDifferentItems", amountAsString)
+        let sum = document.getElementsByClassName("sum")[0].innerText
+        localStorage.setItem("ls_sum", sum)
+
+
+
+
 
         //open delivery data
         window.open("orderForm.html")
