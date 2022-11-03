@@ -1,10 +1,13 @@
 window.addEventListener("load", () => {
 
+
     //get all the relevant buttons after loading
     getAddCardItemButtons()
     getTheDeleteItemButtons()
     getQuantityInputs()
     getOrderButton()
+
+
 
     function getAddCardItemButtons() {
         let addCardItemButtons = document.getElementsByClassName("btn")
@@ -95,6 +98,9 @@ window.addEventListener("load", () => {
         if (isNaN(newInput.value) || newInput.value < 1) {
             newInput.value = 1;
         }
+        if (newInput.value % 1 != 0) {
+            newInput.value =  newInput.value - (newInput.value % 1)
+            }
         //update the total of the card
         updateTotal()
     }
