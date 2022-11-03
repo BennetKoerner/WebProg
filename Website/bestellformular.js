@@ -28,9 +28,8 @@ window.addEventListener("load", () => {
         //open order overview
         window.open("Website.html")
 
+        }
 
-    }
+    })
 
 
-
-})
