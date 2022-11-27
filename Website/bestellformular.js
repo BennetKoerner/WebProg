@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
 
+
     let orderConfirm = document.getElementsByClassName("btn")[0]
     orderConfirm.addEventListener("click", orderConfirmed)
 
@@ -13,8 +14,20 @@ window.addEventListener("load", () => {
         let street = document.getElementById("street").value
         let postCode = document.getElementById("postCode").value
         let extraNote = document.getElementById("extraNote").value
-        //BEZAHLMETHODE MUSS NOCH ERGÄNZT WERDEN!!!
-        console.log(firstName, lastName, mobileNumber, city, street, extraNote, postCode)
+
+        //get selected radio button
+        let radioButtons = document.querySelectorAll('input[name="flexRadioDefault"]')
+        let radioLabel = document.getElementsByClassName("form-check-label")
+        let payment
+        let index=-1
+        for (const radioButton of radioButtons) {
+            index++
+            if (radioButton.checked) {
+                payment = radioLabel[index].innerHTML
+                localStorage.setItem("ls_payment", payment)
+                break
+                }
+            }
 
         //safe delivery data in local storage
         localStorage.setItem("ls_firstName", firstName)

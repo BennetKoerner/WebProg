@@ -8,16 +8,16 @@ window.addEventListener("load", () => {
         let street = localStorage.getItem("ls_street")
         let postCode = localStorage.getItem("ls_postCode")
         let extraNote = localStorage.getItem("ls_extraNote")
+        let payment = localStorage.getItem("ls_payment")
         console.log(firstName, lastName, mobileNumber, city, street, postCode, extraNote)
 
         //create new orderOverview Element
         let rowOrder = document.getElementsByClassName("row-order")[0]
-        let orderAmount = rowOrder.getElementsByClassName("col-4").length
         let order = document.createElement("div")
 
         //create start of order element
         let orderContentStart = `
-                        <div class="col-4">
+                        <div class="col-4" id="incomingOrder">
                             <div class="container">
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
                                                 <p>Adresse: ${city} ${postCode}, ${street}</p>
                                                 <p>Telefon: ${mobileNumber}</p>
                                                 <p>Hinweise: ${extraNote}</p>
-                                                <p>Zahlungsmethode: Paypal</p>
+                                                <p>Zahlungsmethode: ${payment}</p>
                                             </div>
                                         </div>
                                     <div class="flip-card-back">
@@ -64,7 +64,6 @@ window.addEventListener("load", () => {
         let sum = localStorage.getItem("ls_sum")
         let orderContentEnd = `            
                                         <p><b>${sum}</b></p>      
-                                        <a href="#" class="btn btn-primary">Zubereitung Abgeschlossen</a>
                                     </div>
                                 </div>
                             </div>
